@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-
+import { Task } from 'src/task/entities/task.entity'
 @Entity()
 export class User {
     @PrimaryGeneratedColumn('increment')
@@ -12,4 +12,7 @@ export class User {
 
     @Column()
     password: string;
+
+    tasks: Task[];
+
 }
