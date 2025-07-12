@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Task } from 'src/task/entities/task.entity'
 @Entity()
@@ -13,6 +13,7 @@ export class User {
     @Column()
     password: string;
 
+    @OneToMany((type) => Task, (task) => task.user, { eager: true })
     tasks: Task[];
 
 }
